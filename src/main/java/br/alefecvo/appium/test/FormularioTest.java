@@ -50,4 +50,46 @@ public class FormularioTest extends BaseTest{
         //Verificações
         Assertions.assertEquals("Nome: Alefe", formularioPage.obterNome("Nome: Alefe"));
     }
+
+    @Test
+    public void deveAlterarData()
+    {
+        //Acessar menu de formulário
+        menuPage.acessarOpacaoMenu("Formulário");
+
+        //Preencher campos
+        formularioPage.clicarBotaoPorTexto("01/01/2000");
+        formularioPage.clicarPorTexto("20");
+        formularioPage.clicarPorTexto("OK");
+
+        Assertions.assertTrue(formularioPage.existeElementoPorText("20/2/2000"));
+    }
+
+    @Test
+    public void deveAlterarHora(){
+        //Acessar menu de formulário
+        menuPage.acessarOpacaoMenu("Formulário");
+
+        //Preencher campos
+        formularioPage.clicarBotaoPorTexto("06:00");
+        formularioPage.clicarDataPicker("10");
+        formularioPage.clicarDataPicker("40");
+        formularioPage.clicarPorTexto("OK");
+
+        Assertions.assertTrue(formularioPage.existeElementoPorText("10:40"));
+
+    }
+
+    @Test
+    public void deveInteragirComSeekBar(){
+        //Acessar menu de formulário
+        menuPage.acessarOpacaoMenu("Formulário");
+
+        //Clicar no seekbar
+        formularioPage.clicarSeekBar(0.75);
+
+        //Salvar
+        formularioPage.clicarBotaoPorTexto("SALVAR");
+
+    }
 }

@@ -2,6 +2,8 @@ package br.alefecvo.appium.page;
 
 import br.alefecvo.appium.core.BasePage;
 import br.alefecvo.appium.core.DriverFactory;
+import io.appium.java_client.MobileBy;
+import io.appium.java_client.MobileElement;
 import org.openqa.selenium.By;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -48,5 +50,13 @@ public class FormularioPage extends BasePage {
         //Espera para identificar se elemento está na tela
         WebDriverWait wait = new WebDriverWait(DriverFactory.getDriver(), 10);
         wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//*[@text='"+valor+"']")));
+    }
+
+    public void clicarDataPicker(String valor){
+        clicar(valor);
+    }
+
+    public void clicarSeekBar(double posicao){
+        clicaPosicao(posicao);
     }
 }

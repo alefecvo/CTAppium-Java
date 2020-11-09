@@ -1,6 +1,12 @@
 package br.alefecvo.appium.core;
 
+import io.appium.java_client.MobileBy;
 import io.appium.java_client.MobileElement;
+import io.appium.java_client.TouchAction;
+import io.appium.java_client.android.AndroidTouchAction;
+import io.appium.java_client.touch.TapOptions;
+import io.appium.java_client.touch.offset.ElementOption;
+import io.appium.java_client.touch.offset.PointOption;
 import org.openqa.selenium.By;
 
 import java.util.List;
@@ -39,5 +45,30 @@ public class BasePage {
     public boolean existeElementoPorText(String valor){
         List<MobileElement> elementos = getDriver().findElements(By.xpath("//*[@text='"+valor+"']"));
         return  elementos.size() > 0;
+    }
+
+    public void clicar(String valor){
+        getDriver().findElement(MobileBy.AccessibilityId(valor)).click();
+    }
+
+    public void tap(int x,int y){
+        AndroidTouchAction touch = new AndroidTouchAction (getDriver());
+        touch.press(PointOption.point(x,y))
+        .perform ();
+    }
+
+    public void esperar(long tempo){
+        try {
+            Thread.sleep(tempo);
+        }catch (InterruptedException e){
+            e.printStackTrace();
+        }
+    }
+
+    public void clicaPosicao(double posicao){
+        MobileElement seek = getDriver().findElement(MobileBy.AccessibilityId("slid"));
+        int x = (int) (seek.getLocation().x + (seek.getSize().width * posicao));
+        int y = seek.getLocation().y + (seek.getSize().height / 2);
+        tap(x,y);
     }
 }
