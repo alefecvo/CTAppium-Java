@@ -7,13 +7,18 @@ import io.appium.java_client.touch.LongPressOptions;
 import io.appium.java_client.touch.offset.ElementOption;
 import org.openqa.selenium.By;
 
-public class CliqueLongoPage extends BasePage {
+public class CliquePage extends BasePage {
 
     public void cliqueLongo(String valor){
         AndroidTouchAction touch = new AndroidTouchAction(DriverFactory.getDriver());
         touch.longPress(LongPressOptions.longPressOptions().withElement(
                 ElementOption.element(DriverFactory.getDriver().findElement(By.xpath("//*[@text='"+valor+"']")))))
         .perform();
+    }
+
+    public void cliqueDuplo(String valor){
+        clicarPorTexto(valor);
+        clicarPorTexto(valor);
     }
 
     public String obterTextoCampo(){

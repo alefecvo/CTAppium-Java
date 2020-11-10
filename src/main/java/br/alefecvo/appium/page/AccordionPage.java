@@ -9,7 +9,6 @@ public class AccordionPage extends BasePage {
     }
 
     public boolean obterTextoOpcao(String valor){
-        return existeElementoPorText(valor);
+        return existeElementoPorTexto(valor);
     }
-
 }

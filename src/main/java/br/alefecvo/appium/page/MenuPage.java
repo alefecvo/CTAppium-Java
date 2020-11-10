@@ -5,7 +5,7 @@ import br.alefecvo.appium.core.BasePage;
 public class MenuPage extends BasePage {
 
     //Acessar opções de menu
-    public void acessarOpacaoMenu(String valor){
+    public void acessarOpcaoMenu(String valor){
         clicarPorTexto(valor);
     }
 }

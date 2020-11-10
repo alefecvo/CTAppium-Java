@@ -3,6 +3,7 @@ package br.alefecvo.appium.test;
 import br.alefecvo.appium.core.BaseTest;
 import br.alefecvo.appium.page.AlertaPage;
 import br.alefecvo.appium.page.MenuPage;
+import org.junit.Before;
 import org.junit.Test;
 import org.junit.jupiter.api.Assertions;
 
@@ -11,11 +12,14 @@ public class AlertaTest extends BaseTest {
     private MenuPage menuPage = new MenuPage();
     private AlertaPage alertaPage = new AlertaPage();
 
+    @Before
+    public void acessarTela(){
+        //Acessar menu Alertas
+        menuPage.acessarOpcaoMenu("Alertas");
+    }
+
     @Test
     public void deveConfirmarAlerta(){
-        //Acessar menu alerta
-        menuPage.acessarOpacaoMenu("Alertas");
-
         //Clicar em alerta confirm
         alertaPage.clicarAlertaConfirm("ALERTA CONFIRM");
 
@@ -36,15 +40,11 @@ public class AlertaTest extends BaseTest {
 
     @Test
     public void deveClicarForaAlerta(){
-        //Acessar menu alerta
-        menuPage.acessarOpacaoMenu("Alertas");
-
         //Clicar alerta simples
         alertaPage.clicarAlertaSimples("ALERTA SIMPLES");
         alertaPage.clicarForaAlerta(100,150);
 
         //Verificar que mensagem não está presente
-        Assertions.assertFalse(alertaPage.existeElementoPorText("Pode clicar no OK ou fora da caixa para sair"));
-
+        Assertions.assertFalse(alertaPage.existeElementoPorTexto("Pode clicar no OK ou fora da caixa para sair"));
     }
 }

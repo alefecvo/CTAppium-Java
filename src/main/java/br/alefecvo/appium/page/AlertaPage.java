@@ -13,14 +13,6 @@ public class AlertaPage  extends BasePage {
         clicarPorTexto(valor);
     }
 
-    public String obterTituloAlerta(){
-        return obterTexto(By.id("android:id/alertTitle"));
-    }
-
-    public String obterMensagemAlerta(){
-        return obterTexto(By.id("android:id/message"));
-    }
-
     public void clicarBotaoPorTexto(String valor){
         clicarPorTexto(valor);
     }
@@ -28,5 +20,13 @@ public class AlertaPage  extends BasePage {
     public void clicarForaAlerta(int x, int y){
         esperar(1000);
         tap(x,y);
+    }
+
+    public String obterTituloAlerta(){
+        return obterTexto(By.id("android:id/alertTitle"));
+    }
+
+    public String obterMensagemAlerta(){
+        return obterTexto(By.id("android:id/message"));
     }
 }
